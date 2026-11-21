@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Петропавловка (Воронеж) — Вікна супутників 12 та 16 листопада</title>
+  <title>Петропавловка (Воронеж) — Вікна ±1 год (12.11 00:53 та 16.11 23:30)</title>
   <style>
     :root {
       --bg: #0b1017;
@@ -12,7 +12,9 @@
       --text: #e6edf5;
       --muted: #93a4b8;
       --accent: #38bdf8;
-      --accent-2: #f59e0b;
+      --focus: #f59e0b;
+      --focus-bg: rgba(245, 158, 11, 0.14);
+      --focus-border: rgba(245, 158, 11, 0.55);
       --ok: #22c55e;
       --border: #253346;
     }
@@ -50,7 +52,7 @@
     }
     .cards {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
       gap: 14px;
       margin-bottom: 20px;
     }
@@ -59,6 +61,10 @@
       border: 1px solid var(--border);
       border-radius: 10px;
       padding: 14px 16px;
+    }
+    .card.focus-card {
+      border-color: var(--focus-border);
+      background: linear-gradient(180deg, rgba(245, 158, 11, 0.09), var(--panel));
     }
     .card .label {
       font-size: 0.78rem;
@@ -71,6 +77,9 @@
       font-weight: 700;
       margin-top: 4px;
       color: var(--accent);
+    }
+    .card.focus-card .val {
+      color: var(--focus);
     }
     .card .sub {
       font-size: 0.82rem;
@@ -124,8 +133,21 @@
       font-size: 1rem;
       font-weight: 600;
       display: flex;
+      flex-wrap: wrap;
       align-items: center;
       gap: 8px;
+    }
+    .focus-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 3px 10px;
+      border-radius: 999px;
+      font-size: 0.78rem;
+      font-weight: 700;
+      background: var(--focus-bg);
+      color: var(--focus);
+      border: 1px solid var(--focus-border);
     }
     .badge {
       display: inline-block;
@@ -142,7 +164,7 @@
     }
     .badge-mid {
       background: rgba(245, 158, 11, 0.16);
-      color: var(--accent-2);
+      color: var(--focus);
     }
     .table-wrap {
       background: var(--panel);
@@ -172,6 +194,21 @@
     tr:hover td {
       background: rgba(255, 255, 255, 0.025);
     }
+    tr.near-focus td {
+      background: rgba(245, 158, 11, 0.08);
+    }
+    tr.near-focus td:first-child {
+      border-left: 3px solid var(--focus);
+    }
+    .focus-time {
+      display: inline-block;
+      padding: 1px 6px;
+      border-radius: 5px;
+      background: var(--focus-bg);
+      color: #fde68a;
+      border: 1px solid var(--focus-border);
+      font-weight: 700;
+    }
     .note {
       margin-top: 18px;
       padding: 12px 15px;
@@ -193,8 +230,8 @@
 <body>
   <header>
     <div>
-      <h1>Петропавловка (Воронезька обл.) — Активні супутники та вікна (12 та 16 листопада 2026)</h1>
-      <div class="meta">Точка: 50.0700° N, 40.8500° E • Час відображення: Kyiv (UTC+2) • Опорні точки: 12.11 00:53 та 16.11 23:30</div>
+      <h1>Петропавловка (Воронезька обл.) — Вікна ±1 год (12.11 00:53 та 16.11 23:30)</h1>
+      <div class="meta">Точка: 50.0700° N, 40.8500° E • Час: Kyiv (UTC+2) • Інтервали: −1 год до +1 год від цільового часу</div>
     </div>
     <div class="meta">
       <a href="https://www.google.com/maps/search/?api=1&query=50.070000,40.850000" target="_blank">Відкрити точку на Google Maps ↗</a>
@@ -203,45 +240,40 @@
 
   <div class="container">
     <div class="cards">
-      <div class="card">
-        <div class="label">12 листопада • Опорний час</div>
+      <div class="card focus-card">
+        <div class="label">12 листопада • Цільовий час</div>
         <div class="val">00:53 Kyiv</div>
-        <div class="sub">Поруч: RASSVET-2-3 (пік ~00:57, 38.5°) та RASSVET-2-1 (пік ~01:00, 36.5°)</div>
+        <div class="sub">Вікно: 23:53–01:53 Kyiv • Найближчі: RASSVET-2-3 (~00:57, Δ +4.2 хв) та RASSVET-2-1 (~01:00, Δ +7.2 хв)</div>
       </div>
-      <div class="card">
-        <div class="label">16 листопада • Опорний час</div>
+      <div class="card focus-card">
+        <div class="label">16 листопада • Цільовий час</div>
         <div class="val">23:30 Kyiv</div>
-        <div class="sub">Поруч: R-1 No.3 (пік ~23:19, 41.5°), RASSVET-2-3 (~00:02, 77.7°), 2-1 (~00:05, 81.8°)</div>
+        <div class="sub">Вікно: 22:30–00:30 Kyiv • Найближчі: R-1 No.3 (~23:19, Δ −11.2 хв), RASSVET-2-3 (~00:02, Δ +32.0 хв)</div>
       </div>
       <div class="card">
-        <div class="label">Спільна зв'язка 12 та 16 числа</div>
-        <div class="val">2-1 + 2-3</div>
-        <div class="sub">NORAD 59779 та 59781 (h ≈ 785 км, Inc ≈ 98.68°) у нічному інтервалі</div>
-      </div>
-      <div class="card">
-        <div class="label">Типове вікно El ≥ 15°</div>
-        <div class="val">~5.5 – 8.8 хв</div>
-        <div class="sub">При поперечній напіввісі еліпса b = 10 км</div>
+        <div class="label">Підсвітка зсуву Δ до цілі</div>
+        <div class="val">|Δ| ≤ 15 хв</div>
+        <div class="sub">Рядки з кульмінацією в межах ±15 хв від 00:53 або 23:30 виділено бурштиновим акцентом</div>
       </div>
     </div>
 
     <div class="controls">
       <div class="tabs">
-        <button class="tab-btn active" data-day="all">Обидва дні (12 та 16 листопада)</button>
-        <button class="tab-btn" data-day="day12">12 листопада (00:53 Kyiv)</button>
-        <button class="tab-btn" data-day="day16">16 листопада (23:30 Kyiv)</button>
+        <button class="tab-btn active" data-day="all">Обидва вікна (±1 год)</button>
+        <button class="tab-btn" data-day="day12">12.11 (23:53–01:53 • ціль 00:53)</button>
+        <button class="tab-btn" data-day="day16">16.11 (22:30–00:30 • ціль 23:30)</button>
       </div>
       <div class="filters">
         <label>Мін. max кут El:
           <select id="minElFilter">
-            <option value="5">≥ 5° (усі помітні проходи)</option>
-            <option value="15" selected>≥ 15° (робоче вікно)</option>
+            <option value="5" selected>≥ 5° (усі вікна в ±1 год)</option>
+            <option value="15">≥ 15° (робоче вікно)</option>
             <option value="20">≥ 20° (високе вікно)</option>
             <option value="35">≥ 35° (круті проходи)</option>
           </select>
         </label>
-        <label>Пошук борту:
-          <input id="satSearch" type="text" placeholder="Напр. 59781 або RASSVET-2" />
+        <label>Пошук:
+          <input id="satSearch" type="text" placeholder="Напр. 59781 або RASSVET" />
         </label>
       </div>
     </div>
@@ -249,12 +281,12 @@
     <div id="tablesRoot"></div>
 
     <div class="note">
-      <strong>Примітка щодо точності:</strong> Розрахунки виконано на базі переданих TLE з використанням орбітальної моделі з J2-прецесією для координат Петропавловки (50.0700° N, 40.8500° E). Для TLE з давнішими епохами (зокрема вересневих для RASSVET-2-1 / 2-3 та квітневого для 57170) можливі зсуви часу проходу та кута місця.
+      <strong>Примітка:</strong> Вікна відфільтровано строго за діапазоном <strong>−1 год до +1 год</strong> від заданого часу (<code>23:53–01:53</code> для 12.11 навколо <code>00:53</code>; <code>22:30–00:30</code> для 16.11 навколо <code>23:30</code>). Похибка ефемерид для TLE з давнішими епохами (зокрема <code>57170</code>, <code>59779</code>, <code>59781</code>) може зміщувати фактичний момент піку відносно цільового часу.
     </div>
   </div>
 
   <script>
-    const PASS_DATA = {"day12": [{"day": "12 листопада 2026 (опорна точка 00:53 Kyiv)", "sat": "RASSVET-3 3 (68362)", "start_kyiv": "2026-11-11 22:00:00", "peak_kyiv": "22:00:00", "peak_utc": "20:00:00", "end_kyiv": "22:04:45", "dur_0_min": 5.0, "dur_15_min": 2.0, "dur_20_min": 1.5, "win_15": "22:00:00–22:01:45", "max_el": 41.5, "peak_az": 145.2, "peak_dist_km": 750.0, "ellipse_a_km": 15.1, "ellipse_b_km": 10.0, "epoch_utc": "2026-11-20 20:03"}, {"day": "12 листопада 2026 (опорна точка 00:53 Kyiv)", "sat": "RASSVET-3 7 (68366)", "start_kyiv": "2026-11-11 22:00:00", "peak_kyiv": "22:05:00", "peak_utc": "20:05:00", "end_kyiv": "22:10:45", "dur_0_min": 11.0, "dur_15_min": 6.2, "dur_20_min": 5.2, "win_15": "22:02:00–22:08:00", "max_el": 80.1, "peak_az": 75.6, "peak_dist_km": 528.0, "ellipse_a_km": 10.2, "ellipse_b_km": 10.0, "epoch_utc": "2026-11-20 20:06"}, {"day": "12 листопада 2026 (опорна точка 00:53 Kyiv)", "sat": "RASSVET-3 6 (68365)", "start_kyiv": "2026-11-11 22:01:30", "peak_kyiv": "22:07:30", "peak_utc": "20:07:30", "end_kyiv": "22:13:15", "dur_0_min": 12.0, "dur_15_min": 6.2, "dur_20_min": 5.0, "win_15": "22:04:15–22:10:15", "max_el": 78.1, "peak_az": 109.0, "peak_dist_km": 532.0, "ellipse_a_km": 10.2, "ellipse_b_km": 10.0, "epoch_utc": "2026-11-20 20:10"}, {"day": "12 листопада 2026 (опорна точка 00:53 Kyiv)", "sat": "RASSVET-3 5 (68364)", "start_kyiv": "2026-11-11 22:02:45", "peak_kyiv": "22:08:30", "peak_utc": "20:08:30", "end_kyiv": "22:14:30", "dur_0_min": 12.0, "dur_15_min": 6.2, "dur_20_min": 5.0, "win_15": "22:05:30–22:11:30", "max_el": 77.8, "peak_az": 52.5, "peak_dist_km": 534.0, "ellipse_a_km": 10.2, "ellipse_b_km": 10.0, "epoch_utc": "2026-11-21 05:42"}, {"day": "12 листопада 2026 (опорна точка 00:53 Kyiv)", "sat": "RASSVET-3 12 (68371)", "start_kyiv": "2026-11-11 22:06:00", "peak_kyiv": "22:11:45", "peak_utc": "20:11:45", "end_kyiv": "22:17:45", "dur_0_min": 12.0, "dur_15_min": 6.2, "dur_20_min": 5.2, "win_15": "22:08:45–22:14:45", "max_el": 85.2, "peak_az": 4.8, "peak_dist_km": 524.0, "ellipse_a_km": 10.0, "ellipse_b_km": 10.0, "epoch_utc": "2026-11-20 20:16"}, {"day": "12 листопада 2026 (опорна точка 00:53 Kyiv)", "sat": "RASSVET-3 1 (68360)", "start_kyiv": "2026-11-11 22:07:45", "peak_kyiv": "22:13:30", "peak_utc": "20:13:30", "end_kyiv": "22:19:15", "dur_0_min": 11.8, "dur_15_min": 6.2, "dur_20_min": 5.0, "win_15": "22:10:30–22:16:30", "max_el": 66.3, "peak_az": 265.0, "peak_dist_km": 559.0, "ellipse_a_km": 10.9, "ellipse_b_km": 10.0, "epoch_utc": "2026-11-20 20:01"}, {"day": "12 листопада 2026 (опорна точка 00:53 Kyiv)", "sat": "RASSVET-3 16 (68375)", "start_kyiv": "2026-11-11 22:13:30", "peak_kyiv": "22:19:15", "peak_utc": "20:19:15", "end_kyiv": "22:25:00", "dur_0_min": 11.8, "dur_15_min": 6.0, "dur_20_min": 5.0, "win_15": "22:16:15–22:22:00", "max_el": 58.3, "peak_az": 261.9, "peak_dist_km": 602.0, "ellipse_a_km": 11.7, "ellipse_b_km": 10.0, "epoch_utc": "2026-11-21 07:23"}, {"day": "12 листопада 2026 (опорна точка 00:53 Kyiv)", "sat": "RASSVET-3 13 (68372)", "start_kyiv": "2026-11-11 22:17:00", "peak_kyiv": "22:22:45", "peak_utc": "20:22:45", "end_kyiv": "22:28:30", "dur_0_min": 11.8, "dur_15_min": 6.2, "dur_20_min": 5.2, "win_15": "22:19:45–22:25:45", "max_el": 66.0, "peak_az": 265.2, "peak_dist_km": 563.0, "ellipse_a_km": 10.9, "ellipse_b_km": 10.0, "epoch_utc": "2026-11-21 07:26"}, {"day": "12 листопада 2026 (опорна точка 00:53 Kyiv)", "sat": "RASSVET-3 9 (68368)", "start_kyiv": "2026-11-11 22:19:45", "peak_kyiv": "22:25:45", "peak_utc": "20:25:45", "end_kyiv": "22:31:30", "dur_0_min": 12.0, "dur_15_min": 6.0, "dur_20_min": 5.0, "win_15": "22:22:45–22:28:30", "max_el": 49.2, "peak_az": 260.1, "peak_dist_km": 676.0, "ellipse_a_km": 13.2, "ellipse_b_km": 10.0, "epoch_utc": "2026-11-21 14:07"}, {"day": "12 листопада 2026 (опорна точка 00:53 Kyiv)", "sat": "RASSVET-3 8 (68367)", "start_kyiv": "2026-11-11 22:20:45", "peak_kyiv": "22:26:30", "peak_utc": "20:26:30", "end_kyiv": "22:32:00", "dur_0_min": 11.5, "dur_15_min": 5.8, "dur_20_min": 4.5, "win_15": "22:23:45–22:29:15", "max_el": 44.1, "peak_az": 261.6, "peak_dist_km": 720.0, "ellipse_a_km": 14.4, "ellipse_b_km": 10.0, "epoch_utc": "2026-11-20 20:28"}, {"day": "12 листопада 2026 (опорна точка 00:53 Kyiv)", "sat": "RASSVET-3 15 (68374)", "start_kyiv": "2026-11-11 22:23:15", "peak_kyiv": "22:28:45", "peak_utc": "20:28:45", "end_kyiv": "22:34:30", "dur_0_min": 11.5, "dur_15_min": 5.5, "dur_20_min": 4.5, "win_15": "22:26:15–22:31:30", "max_el": 40.2, "peak_az": 271.1, "peak_dist_km": 765.0, "ellipse_a_km": 15.5, "ellipse_b_km": 10.0, "epoch_utc": "2026-11-20 20:25"}, {"day": "12 листопада 2026 (опорна точка 00:53 Kyiv)", "sat": "RASSVET-3 2 (68361)", "start_kyiv": "2026-11-11 22:26:45", "peak_kyiv": "22:32:15", "peak_utc": "20:32:15", "end_kyiv": "22:37:45", "dur_0_min": 11.2, "dur_15_min": 5.2, "dur_20_min": 4.2, "win_15": "22:29:45–22:34:45", "max_el": 35.0, "peak_az": 268.0, "peak_dist_km": 843.0, "ellipse_a_km": 17.4, "ellipse_b_km": 10.0, "epoch_utc": "2026-11-21 02:51"}, {"day": "12 листопада 2026 (опорна точка 00:53 Kyiv)", "sat": "RASSVET-3 10 (68369)", "start_kyiv": "2026-11-11 22:29:45", "peak_kyiv": "22:35:15", "peak_utc": "20:35:15", "end_kyiv": "22:40:30", "dur_0_min": 11.0, "dur_15_min": 4.0, "dur_20_min": 2.0, "win_15": "22:33:15–22:37:00", "max_el": 21.9, "peak_az": 269.7, "peak_dist_km": 1162.0, "ellipse_a_km": 26.8, "ellipse_b_km": 10.0, "epoch_utc": "2026-11-20 20:35"}, {"day": "12 листопада 2026 (опорна точка 00:53 Kyiv)", "sat": "RASSVET-3 14 (68373)", "start_kyiv": "2026-11-11 22:35:00", "peak_kyiv": "22:38:00", "peak_utc": "20:38:00", "end_kyiv": "22:41:00", "dur_0_min": 6.2, "dur_15_min": 0.0, "dur_20_min": 0.0, "win_15": "—", "max_el": 5.6, "peak_az": 278.0, "peak_dist_km": 1624.0, "ellipse_a_km": null, "ellipse_b_km": 10.0, "epoch_utc": "2026-11-21 14:39"}, {"day": "12 листопада 2026 (опорна точка 00:53 Kyiv)", "sat": "RASSVET-3 11 (68370)", "start_kyiv": "2026-11-11 23:05:00", "peak_kyiv": "23:08:30", "peak_utc": "21:08:30", "end_kyiv": "23:12:00", "dur_0_min": 7.2, "dur_15_min": 0.0, "dur_20_min": 0.0, "win_15": "—", "max_el": 5.5, "peak_az": 281.4, "peak_dist_km": 2034.0, "ellipse_a_km": null, "ellipse_b_km": 10.0, "epoch_utc": "2026-11-20 18:27"}, {"day": "12 листопада 2026 (опорна точка 00:53 Kyiv)", "sat": "OBJECT E / R-1 No.3 (57170)", "start_kyiv": "2026-11-11 23:08:30", "peak_kyiv": "23:14:00", "peak_utc": "21:14:00", "end_kyiv": "23:19:45", "dur_0_min": 11.5, "dur_15_min": 5.8, "dur_20_min": 4.5, "win_15": "23:11:15–23:16:45", "max_el": 46.2, "peak_az": 294.2, "peak_dist_km": 704.0, "ellipse_a_km": 13.8, "ellipse_b_km": 10.0, "epoch_utc": "2026-04-10 00:00"}, {"day": "12 листопада 2026 (опорна точка 00:53 Kyiv)", "sat": "RASSVET-2-3 (59781)", "start_kyiv": "2026-11-11 23:10:45", "peak_kyiv": "23:17:45", "peak_utc": "21:17:45", "end_kyiv": "23:25:00", "dur_0_min": 14.5, "dur_15_min": 7.5, "dur_20_min": 6.0, "win_15": "23:14:15–23:21:30", "max_el": 36.0, "peak_az": 65.9, "peak_dist_km": 1238.0, "ellipse_a_km": 17.0, "ellipse_b_km": 10.0, "epoch_utc": "2026-09-18 07:15"}, {"day": "12 листопада 2026 (опорна точка 00:53 Kyiv)", "sat": "RASSVET-2-1 (59779)", "start_kyiv": "2026-11-11 23:13:45", "peak_kyiv": "23:20:45", "peak_utc": "21:20:45", "end_kyiv": "23:27:45", "dur_0_min": 14.2, "dur_15_min": 7.8, "dur_20_min": 6.2, "win_15": "23:17:00–23:24:30", "max_el": 37.8, "peak_az": 64.1, "peak_dist_km": 1200.0, "ellipse_a_km": 16.3, "ellipse_b_km": 10.0, "epoch_utc": "2026-09-06 20:15"}, {"day": "12 листопада 2026 (опорна точка 00:53 Kyiv)", "sat": "RASSVET-3 3 (68362)", "start_kyiv": "2026-11-11 23:29:15", "peak_kyiv": "23:34:00", "peak_utc": "21:34:00", "end_kyiv": "23:38:30", "dur_0_min": 9.5, "dur_15_min": 0.0, "dur_20_min": 0.0, "win_15": "—", "max_el": 11.8, "peak_az": 275.5, "peak_dist_km": 1636.0, "ellipse_a_km": 49.1, "ellipse_b_km": 10.0, "epoch_utc": "2026-11-20 20:03"}, {"day": "12 листопада 2026 (опорна точка 00:53 Kyiv)", "sat": "RASSVET-3 7 (68366)", "start_kyiv": "2026-11-11 23:35:30", "peak_kyiv": "23:40:00", "peak_utc": "21:40:00", "end_kyiv": "23:44:15", "dur_0_min": 9.0, "dur_15_min": 0.0, "dur_20_min": 0.0, "win_15": "—", "max_el": 9.9, "peak_az": 277.4, "peak_dist_km": 1755.0, "ellipse_a_km": null, "ellipse_b_km": 10.0, "epoch_utc": "2026-11-20 20:06"}, {"day": "12 листопада 2026 (опорна точка 00:53 Kyiv)", "sat": "RASSVET-3 6 (68365)", "start_kyiv": "2026-11-11 23:38:00", "peak_kyiv": "23:42:15", "peak_utc": "21:42:15", "end_kyiv": "23:46:45", "dur_0_min": 9.0, "dur_15_min": 0.0, "dur_20_min": 0.0, "win_15": "—", "max_el": 10.0, "peak_az": 279.4, "peak_dist_km": 1752.0, "ellipse_a_km": null, "ellipse_b_km": 10.0, "epoch_utc": "2026-11-20 20:10"}, {"day": "12 листопада 2026 (опорна точка 00:53 Kyiv)", "sat": "RASSVET-3 5 (68364)", "start_kyiv": "2026-11-11 23:39:00", "peak_kyiv": "23:43:30", "peak_utc": "21:43:30", "end_kyiv": "23:48:00", "dur_0_min": 9.2, "dur_15_min": 0.0, "dur_20_min": 0.0, "win_15": "—", "max_el": 10.0, "peak_az": 279.2, "peak_dist_km": 1747.0, "ellipse_a_km": 57.3, "ellipse_b_km": 10.0, "epoch_utc": "2026-11-21 05:42"}, {"day": "12 листопада 2026 (опорна точка 00:53 Kyiv)", "sat": "RASSVET-3 12 (68371)", "start_kyiv": "2026-11-11 23:42:30", "peak_kyiv": "23:46:45", "peak_utc": "21:46:45", "end_kyiv": "23:51:00", "dur_0_min": 8.8, "dur_15_min": 0.0, "dur_20_min": 0.0, "win_15": "—", "max_el": 8.9, "peak_az": 278.8, "peak_dist_km": 1829.0, "ellipse_a_km": null, "ellipse_b_km": 10.0, "epoch_utc": "2026-11-20 20:16"}, {"day": "12 листопада 2026 (опорна точка 00:53 Kyiv)", "sat": "RASSVET-3 1 (68360)", "start_kyiv": "2026-11-11 23:44:30", "peak_kyiv": "23:48:00", "peak_utc": "21:48:00", "end_kyiv": "23:51:45", "dur_0_min": 7.5, "dur_15_min": 0.0, "dur_20_min": 0.0, "win_15": "—", "max_el": 5.9, "peak_az": 283.0, "peak_dist_km": 2040.0, "ellipse_a_km": null, "ellipse_b_km": 10.0, "epoch_utc": "2026-11-20 20:01"}, {"day": "12 листопада 2026 (опорна точка 00:53 Kyiv)", "sat": "RASSVET-3 16 (68375)", "start_kyiv": "2026-11-11 23:50:30", "peak_kyiv": "23:53:45", "peak_utc": "21:53:45", "end_kyiv": "23:57:15", "dur_0_min": 7.0, "dur_15_min": 0.0, "dur_20_min": 0.0, "win_15": "—", "max_el": 5.1, "peak_az": 283.6, "peak_dist_km": 2126.0, "ellipse_a_km": null, "ellipse_b_km": 10.0, "epoch_utc": "2026-11-21 07:23"}, {"day": "12 листопада 2026 (опорна точка 00:53 Kyiv)", "sat": "RASSVET-3 13 (68372)", "start_kyiv": "2026-11-11 23:53:45", "peak_kyiv": "23:57:30", "peak_utc": "21:57:30", "end_kyiv": "00:01:15", "dur_0_min": 7.8, "dur_15_min": 0.0, "dur_20_min": 0.0, "win_15": "—", "max_el": 5.9, "peak_az": 280.9, "peak_dist_km": 2045.0, "ellipse_a_km": null, "ellipse_b_km": 10.0, "epoch_utc": "2026-11-21 07:26"}, {"day": "12 листопада 2026 (опорна точка 00:53 Kyiv)", "sat": "OBJECT E / R-1 No.3 (57170)", "start_kyiv": "2026-11-12 00:43:15", "peak_kyiv": "00:47:00", "peak_utc": "22:47:00", "end_kyiv": "00:50:30", "dur_0_min": 7.5, "dur_15_min": 0.0, "dur_20_min": 0.0, "win_15": "—", "max_el": 5.9, "peak_az": 308.0, "peak_dist_km": 2075.0, "ellipse_a_km": null, "ellipse_b_km": 10.0, "epoch_utc": "2026-04-10 00:00"}, {"day": "12 листопада 2026 (опорна точка 00:53 Kyiv)", "sat": "RASSVET-2-3 (59781)", "start_kyiv": "2026-11-12 00:50:00", "peak_kyiv": "00:57:15", "peak_utc": "22:57:15", "end_kyiv": "01:04:30", "dur_0_min": 14.8, "dur_15_min": 7.8, "dur_20_min": 6.2, "win_15": "00:53:30–01:01:00", "max_el": 38.5, "peak_az": 264.8, "peak_dist_km": 1183.0, "ellipse_a_km": 16.0, "ellipse_b_km": 10.0, "epoch_utc": "2026-09-18 07:15"}, {"day": "12 листопада 2026 (опорна точка 00:53 Kyiv)", "sat": "RASSVET-2-1 (59779)", "start_kyiv": "2026-11-12 00:53:00", "peak_kyiv": "01:00:15", "peak_utc": "23:00:15", "end_kyiv": "01:07:15", "dur_0_min": 14.5, "dur_15_min": 7.5, "dur_20_min": 6.0, "win_15": "00:56:30–01:03:45", "max_el": 36.5, "peak_az": 266.5, "peak_dist_km": 1225.0, "ellipse_a_km": 16.8, "ellipse_b_km": 10.0, "epoch_utc": "2026-09-06 20:15"}], "day16": [{"day": "16 листопада 2026 (опорна точка 23:30 Kyiv)", "sat": "RASSVET-1 1 (57169)", "start_kyiv": "2026-11-16 20:25:00", "peak_kyiv": "20:30:30", "peak_utc": "18:30:30", "end_kyiv": "20:36:15", "dur_0_min": 11.5, "dur_15_min": 6.0, "dur_20_min": 5.0, "win_15": "20:27:45–20:33:30", "max_el": 84.3, "peak_az": 218.8, "peak_dist_km": 515.0, "ellipse_a_km": 10.0, "ellipse_b_km": 10.0, "epoch_utc": "2026-03-27 03:39"}, {"day": "16 листопада 2026 (опорна точка 23:30 Kyiv)", "sat": "RASSVET-3 3 (68362)", "start_kyiv": "2026-11-16 20:29:15", "peak_kyiv": "20:34:45", "peak_utc": "18:34:45", "end_kyiv": "20:40:15", "dur_0_min": 11.2, "dur_15_min": 4.2, "dur_20_min": 2.2, "win_15": "20:32:45–20:36:45", "max_el": 23.3, "peak_az": 69.7, "peak_dist_km": 1125.0, "ellipse_a_km": 25.3, "ellipse_b_km": 10.0, "epoch_utc": "2026-11-20 20:03"}, {"day": "16 листопада 2026 (опорна точка 23:30 Kyiv)", "sat": "RASSVET-3 7 (68366)", "start_kyiv": "2026-11-16 20:33:30", "peak_kyiv": "20:39:00", "peak_utc": "18:39:00", "end_kyiv": "20:44:30", "dur_0_min": 11.2, "dur_15_min": 4.8, "dur_20_min": 3.2, "win_15": "20:36:45–20:41:15", "max_el": 25.9, "peak_az": 69.4, "peak_dist_km": 1048.0, "ellipse_a_km": 22.9, "ellipse_b_km": 10.0, "epoch_utc": "2026-11-20 20:06"}, {"day": "16 листопада 2026 (опорна точка 23:30 Kyiv)", "sat": "RASSVET-3 1 (68360)", "start_kyiv": "2026-11-16 20:34:30", "peak_kyiv": "20:40:00", "peak_utc": "18:40:00", "end_kyiv": "20:45:30", "dur_0_min": 11.2, "dur_15_min": 5.2, "dur_20_min": 3.8, "win_15": "20:37:30–20:42:30", "max_el": 31.2, "peak_az": 70.7, "peak_dist_km": 911.0, "ellipse_a_km": 19.3, "ellipse_b_km": 10.0, "epoch_utc": "2026-11-20 20:01"}, {"day": "16 листопада 2026 (опорна точка 23:30 Kyiv)", "sat": "RASSVET-3 6 (68365)", "start_kyiv": "2026-11-16 20:36:45", "peak_kyiv": "20:42:15", "peak_utc": "18:42:15", "end_kyiv": "20:47:45", "dur_0_min": 11.2, "dur_15_min": 4.8, "dur_20_min": 3.0, "win_15": "20:40:00–20:44:30", "max_el": 26.3, "peak_az": 67.8, "peak_dist_km": 1039.0, "ellipse_a_km": 22.6, "ellipse_b_km": 10.0, "epoch_utc": "2026-11-20 20:10"}, {"day": "16 листопада 2026 (опорна точка 23:30 Kyiv)", "sat": "RASSVET-3 5 (68364)", "start_kyiv": "2026-11-16 20:38:30", "peak_kyiv": "20:44:15", "peak_utc": "18:44:15", "end_kyiv": "20:49:45", "dur_0_min": 11.5, "dur_15_min": 4.8, "dur_20_min": 3.2, "win_15": "20:42:00–20:46:30", "max_el": 26.4, "peak_az": 72.6, "peak_dist_km": 1034.0, "ellipse_a_km": 22.5, "ellipse_b_km": 10.0, "epoch_utc": "2026-11-21 05:42"}, {"day": "16 листопада 2026 (опорна точка 23:30 Kyiv)", "sat": "RASSVET-3 12 (68371)", "start_kyiv": "2026-11-16 20:41:45", "peak_kyiv": "20:47:30", "peak_utc": "18:47:30", "end_kyiv": "20:53:00", "dur_0_min": 11.5, "dur_15_min": 5.0, "dur_20_min": 3.5, "win_15": "20:45:00–20:49:45", "max_el": 29.2, "peak_az": 75.1, "peak_dist_km": 965.0, "ellipse_a_km": 20.5, "ellipse_b_km": 10.0, "epoch_utc": "2026-11-20 20:16"}, {"day": "16 листопада 2026 (опорна точка 23:30 Kyiv)", "sat": "RASSVET-3 16 (68375)", "start_kyiv": "2026-11-16 20:46:45", "peak_kyiv": "20:52:30", "peak_utc": "18:52:30", "end_kyiv": "20:58:15", "dur_0_min": 11.8, "dur_15_min": 5.8, "dur_20_min": 4.5, "win_15": "20:49:45–20:55:15", "max_el": 41.1, "peak_az": 72.8, "peak_dist_km": 755.0, "ellipse_a_km": 15.2, "ellipse_b_km": 10.0, "epoch_utc": "2026-11-21 07:23"}, {"day": "16 листопада 2026 (опорна точка 23:30 Kyiv)", "sat": "RASSVET-3 13 (68372)", "start_kyiv": "2026-11-16 20:50:15", "peak_kyiv": "20:56:00", "peak_utc": "18:56:00", "end_kyiv": "21:01:30", "dur_0_min": 11.5, "dur_15_min": 5.5, "dur_20_min": 4.2, "win_15": "20:53:15–20:58:30", "max_el": 36.5, "peak_az": 77.3, "peak_dist_km": 818.0, "ellipse_a_km": 16.8, "ellipse_b_km": 10.0, "epoch_utc": "2026-11-21 07:26"}, {"day": "16 листопада 2026 (опорна точка 23:30 Kyiv)", "sat": "RASSVET-3 15 (68374)", "start_kyiv": "2026-11-16 20:54:30", "peak_kyiv": "21:00:15", "peak_utc": "19:00:15", "end_kyiv": "21:06:00", "dur_0_min": 11.8, "dur_15_min": 6.0, "dur_20_min": 4.8, "win_15": "20:57:15–21:03:00", "max_el": 55.7, "peak_az": 77.7, "peak_dist_km": 617.0, "ellipse_a_km": 12.1, "ellipse_b_km": 10.0, "epoch_utc": "2026-11-20 20:25"}, {"day": "16 листопада 2026 (опорна точка 23:30 Kyiv)", "sat": "RASSVET-3 8 (68367)", "start_kyiv": "2026-11-16 20:55:00", "peak_kyiv": "21:01:00", "peak_utc": "19:01:00", "end_kyiv": "21:06:45", "dur_0_min": 12.0, "dur_15_min": 6.0, "dur_20_min": 5.0, "win_15": "20:58:00–21:03:45", "max_el": 55.3, "peak_az": 80.3, "peak_dist_km": 622.0, "ellipse_a_km": 12.2, "ellipse_b_km": 10.0, "epoch_utc": "2026-11-20 20:28"}, {"day": "16 листопада 2026 (опорна точка 23:30 Kyiv)", "sat": "RASSVET-3 11 (68370)", "start_kyiv": "2026-11-16 20:58:15", "peak_kyiv": "21:03:45", "peak_utc": "19:03:45", "end_kyiv": "21:09:15", "dur_0_min": 11.2, "dur_15_min": 5.8, "dur_20_min": 4.5, "win_15": "21:01:00–21:06:30", "max_el": 49.1, "peak_az": 269.3, "peak_dist_km": 642.0, "ellipse_a_km": 13.2, "ellipse_b_km": 10.0, "epoch_utc": "2026-11-20 18:27"}, {"day": "16 листопада 2026 (опорна точка 23:30 Kyiv)", "sat": "RASSVET-3 2 (68361)", "start_kyiv": "2026-11-16 20:59:45", "peak_kyiv": "21:05:30", "peak_utc": "19:05:30", "end_kyiv": "21:11:15", "dur_0_min": 11.8, "dur_15_min": 6.2, "dur_20_min": 5.2, "win_15": "21:02:30–21:08:30", "max_el": 68.1, "peak_az": 76.6, "peak_dist_km": 556.0, "ellipse_a_km": 10.8, "ellipse_b_km": 10.0, "epoch_utc": "2026-11-21 02:51"}, {"day": "16 листопада 2026 (опорна точка 23:30 Kyiv)", "sat": "RASSVET-3 9 (68368)", "start_kyiv": "2026-11-16 21:02:30", "peak_kyiv": "21:08:15", "peak_utc": "19:08:15", "end_kyiv": "21:14:15", "dur_0_min": 12.0, "dur_15_min": 6.2, "dur_20_min": 5.0, "win_15": "21:05:15–21:11:15", "max_el": 61.8, "peak_az": 66.9, "peak_dist_km": 592.0, "ellipse_a_km": 11.4, "ellipse_b_km": 10.0, "epoch_utc": "2026-11-21 14:07"}, {"day": "16 листопада 2026 (опорна точка 23:30 Kyiv)", "sat": "RASSVET-3 10 (68369)", "start_kyiv": "2026-11-16 21:02:45", "peak_kyiv": "21:08:45", "peak_utc": "19:08:45", "end_kyiv": "21:14:30", "dur_0_min": 12.0, "dur_15_min": 6.2, "dur_20_min": 5.0, "win_15": "21:05:45–21:11:45", "max_el": 70.5, "peak_az": 253.7, "peak_dist_km": 547.0, "ellipse_a_km": 10.6, "ellipse_b_km": 10.0, "epoch_utc": "2026-11-20 20:35"}, {"day": "16 листопада 2026 (опорна точка 23:30 Kyiv)", "sat": "RASSVET-3 14 (68373)", "start_kyiv": "2026-11-16 21:23:00", "peak_kyiv": "21:27:00", "peak_utc": "19:27:00", "end_kyiv": "21:31:00", "dur_0_min": 8.2, "dur_15_min": 0.0, "dur_20_min": 0.0, "win_15": "—", "max_el": 14.0, "peak_az": 274.1, "peak_dist_km": 1107.0, "ellipse_a_km": 41.2, "ellipse_b_km": 10.0, "epoch_utc": "2026-11-21 14:39"}, {"day": "16 листопада 2026 (опорна точка 23:30 Kyiv)", "sat": "OBJECT E / R-1 No.3 (57170)", "start_kyiv": "2026-11-16 21:39:15", "peak_kyiv": "21:44:30", "peak_utc": "19:44:30", "end_kyiv": "21:49:45", "dur_0_min": 10.8, "dur_15_min": 3.2, "dur_20_min": 0.0, "win_15": "21:43:00–21:46:00", "max_el": 18.7, "peak_az": 89.9, "peak_dist_km": 1293.0, "ellipse_a_km": 31.1, "ellipse_b_km": 10.0, "epoch_utc": "2026-04-10 00:00"}, {"day": "16 листопада 2026 (опорна точка 23:30 Kyiv)", "sat": "RASSVET-1 1 (57169)", "start_kyiv": "2026-11-16 22:00:45", "peak_kyiv": "22:04:45", "peak_utc": "20:04:45", "end_kyiv": "22:09:00", "dur_0_min": 8.5, "dur_15_min": 0.0, "dur_20_min": 0.0, "win_15": "—", "max_el": 8.2, "peak_az": 274.7, "peak_dist_km": 1850.0, "ellipse_a_km": null, "ellipse_b_km": 10.0, "epoch_utc": "2026-03-27 03:39"}, {"day": "16 листопада 2026 (опорна точка 23:30 Kyiv)", "sat": "RASSVET-3 3 (68362)", "start_kyiv": "2026-11-16 22:04:45", "peak_kyiv": "22:10:30", "peak_utc": "20:10:30", "end_kyiv": "22:16:00", "dur_0_min": 11.5, "dur_15_min": 5.2, "dur_20_min": 4.0, "win_15": "22:08:00–22:13:00", "max_el": 32.0, "peak_az": 265.1, "peak_dist_km": 903.0, "ellipse_a_km": 18.9, "ellipse_b_km": 10.0, "epoch_utc": "2026-11-20 20:03"}, {"day": "16 листопада 2026 (опорна точка 23:30 Kyiv)", "sat": "RASSVET-3 7 (68366)", "start_kyiv": "2026-11-16 22:09:00", "peak_kyiv": "22:14:30", "peak_utc": "20:14:30", "end_kyiv": "22:20:00", "dur_0_min": 11.2, "dur_15_min": 5.0, "dur_20_min": 3.5, "win_15": "22:12:15–22:17:00", "max_el": 28.4, "peak_az": 272.6, "peak_dist_km": 981.0, "ellipse_a_km": 21.0, "ellipse_b_km": 10.0, "epoch_utc": "2026-11-20 20:06"}, {"day": "16 листопада 2026 (опорна точка 23:30 Kyiv)", "sat": "RASSVET-3 1 (68360)", "start_kyiv": "2026-11-16 22:10:00", "peak_kyiv": "22:15:30", "peak_utc": "20:15:30", "end_kyiv": "22:20:45", "dur_0_min": 11.0, "dur_15_min": 4.0, "dur_20_min": 2.2, "win_15": "22:13:30–22:17:15", "max_el": 23.0, "peak_az": 268.3, "peak_dist_km": 1120.0, "ellipse_a_km": 25.6, "ellipse_b_km": 10.0, "epoch_utc": "2026-11-20 20:01"}, {"day": "16 листопада 2026 (опорна точка 23:30 Kyiv)", "sat": "RASSVET-3 6 (68365)", "start_kyiv": "2026-11-16 22:12:30", "peak_kyiv": "22:18:00", "peak_utc": "20:18:00", "end_kyiv": "22:23:30", "dur_0_min": 11.2, "dur_15_min": 5.0, "dur_20_min": 3.5, "win_15": "22:15:30–22:20:15", "max_el": 28.0, "peak_az": 267.1, "peak_dist_km": 991.0, "ellipse_a_km": 21.3, "ellipse_b_km": 10.0, "epoch_utc": "2026-11-20 20:10"}, {"day": "16 листопада 2026 (опорна точка 23:30 Kyiv)", "sat": "RASSVET-3 5 (68364)", "start_kyiv": "2026-11-16 22:14:15", "peak_kyiv": "22:19:45", "peak_utc": "20:19:45", "end_kyiv": "22:25:15", "dur_0_min": 11.2, "dur_15_min": 4.8, "dur_20_min": 3.2, "win_15": "22:17:30–22:22:00", "max_el": 27.9, "peak_az": 269.7, "peak_dist_km": 996.0, "ellipse_a_km": 21.4, "ellipse_b_km": 10.0, "epoch_utc": "2026-11-21 05:42"}, {"day": "16 листопада 2026 (опорна точка 23:30 Kyiv)", "sat": "RASSVET-2-3 (59781)", "start_kyiv": "2026-11-16 22:17:30", "peak_kyiv": "22:23:30", "peak_utc": "20:23:30", "end_kyiv": "22:29:30", "dur_0_min": 12.2, "dur_15_min": 1.2, "dur_20_min": 0.0, "win_15": "22:23:00–22:24:00", "max_el": 15.3, "peak_az": 52.0, "peak_dist_km": 2009.0, "ellipse_a_km": 37.8, "ellipse_b_km": 10.0, "epoch_utc": "2026-09-18 07:15"}, {"day": "16 листопада 2026 (опорна точка 23:30 Kyiv)", "sat": "RASSVET-3 12 (68371)", "start_kyiv": "2026-11-16 22:17:30", "peak_kyiv": "22:23:00", "peak_utc": "20:23:00", "end_kyiv": "22:28:15", "dur_0_min": 11.0, "dur_15_min": 4.5, "dur_20_min": 3.0, "win_15": "22:20:45–22:25:00", "max_el": 25.0, "peak_az": 267.7, "peak_dist_km": 1071.0, "ellipse_a_km": 23.7, "ellipse_b_km": 10.0, "epoch_utc": "2026-11-20 20:16"}, {"day": "16 листопада 2026 (опорна точка 23:30 Kyiv)", "sat": "RASSVET-2-1 (59779)", "start_kyiv": "2026-11-16 22:20:15", "peak_kyiv": "22:26:30", "peak_utc": "20:26:30", "end_kyiv": "22:32:30", "dur_0_min": 12.5, "dur_15_min": 2.5, "dur_20_min": 0.0, "win_15": "22:25:15–22:27:30", "max_el": 16.0, "peak_az": 51.7, "peak_dist_km": 1968.0, "ellipse_a_km": 36.2, "ellipse_b_km": 10.0, "epoch_utc": "2026-09-06 20:15"}, {"day": "16 листопада 2026 (опорна точка 23:30 Kyiv)", "sat": "RASSVET-3 16 (68375)", "start_kyiv": "2026-11-16 22:22:45", "peak_kyiv": "22:27:45", "peak_utc": "20:27:45", "end_kyiv": "22:33:00", "dur_0_min": 10.5, "dur_15_min": 2.8, "dur_20_min": 0.0, "win_15": "22:26:30–22:29:00", "max_el": 17.9, "peak_az": 274.6, "peak_dist_km": 1315.0, "ellipse_a_km": 32.5, "ellipse_b_km": 10.0, "epoch_utc": "2026-11-21 07:23"}, {"day": "16 листопада 2026 (опорна точка 23:30 Kyiv)", "sat": "RASSVET-3 13 (68372)", "start_kyiv": "2026-11-16 22:26:00", "peak_kyiv": "22:31:15", "peak_utc": "20:31:15", "end_kyiv": "22:36:30", "dur_0_min": 10.8, "dur_15_min": 3.2, "dur_20_min": 0.0, "win_15": "22:29:45–22:32:45", "max_el": 19.9, "peak_az": 272.2, "peak_dist_km": 1234.0, "ellipse_a_km": 29.4, "ellipse_b_km": 10.0, "epoch_utc": "2026-11-21 07:26"}, {"day": "16 листопада 2026 (опорна точка 23:30 Kyiv)", "sat": "RASSVET-3 15 (68374)", "start_kyiv": "2026-11-16 22:30:30", "peak_kyiv": "22:35:15", "peak_utc": "20:35:15", "end_kyiv": "22:40:00", "dur_0_min": 9.8, "dur_15_min": 0.0, "dur_20_min": 0.0, "win_15": "—", "max_el": 13.7, "peak_az": 276.9, "peak_dist_km": 1518.0, "ellipse_a_km": 42.3, "ellipse_b_km": 10.0, "epoch_utc": "2026-11-20 20:25"}, {"day": "16 листопада 2026 (опорна точка 23:30 Kyiv)", "sat": "RASSVET-3 8 (68367)", "start_kyiv": "2026-11-16 22:31:15", "peak_kyiv": "22:36:00", "peak_utc": "20:36:00", "end_kyiv": "22:41:00", "dur_0_min": 10.0, "dur_15_min": 0.0, "dur_20_min": 0.0, "win_15": "—", "max_el": 13.8, "peak_az": 276.9, "peak_dist_km": 1514.0, "ellipse_a_km": 41.8, "ellipse_b_km": 10.0, "epoch_utc": "2026-11-20 20:28"}, {"day": "16 листопада 2026 (опорна точка 23:30 Kyiv)", "sat": "RASSVET-3 2 (68361)", "start_kyiv": "2026-11-16 22:36:00", "peak_kyiv": "22:40:30", "peak_utc": "20:40:30", "end_kyiv": "22:45:00", "dur_0_min": 9.2, "dur_15_min": 0.0, "dur_20_min": 0.0, "win_15": "—", "max_el": 11.5, "peak_az": 277.3, "peak_dist_km": 1647.0, "ellipse_a_km": 50.3, "ellipse_b_km": 10.0, "epoch_utc": "2026-11-21 02:51"}, {"day": "16 листопада 2026 (опорна точка 23:30 Kyiv)", "sat": "RASSVET-3 9 (68368)", "start_kyiv": "2026-11-16 22:38:45", "peak_kyiv": "22:43:30", "peak_utc": "20:43:30", "end_kyiv": "22:48:15", "dur_0_min": 9.8, "dur_15_min": 0.0, "dur_20_min": 0.0, "win_15": "—", "max_el": 12.7, "peak_az": 277.0, "peak_dist_km": 1590.0, "ellipse_a_km": 45.4, "ellipse_b_km": 10.0, "epoch_utc": "2026-11-21 14:07"}, {"day": "16 листопада 2026 (опорна точка 23:30 Kyiv)", "sat": "RASSVET-3 10 (68369)", "start_kyiv": "2026-11-16 22:39:30", "peak_kyiv": "22:43:30", "peak_utc": "20:43:30", "end_kyiv": "22:47:15", "dur_0_min": 8.0, "dur_15_min": 0.0, "dur_20_min": 0.0, "win_15": "—", "max_el": 6.5, "peak_az": 279.8, "peak_dist_km": 2002.0, "ellipse_a_km": null, "ellipse_b_km": 10.0, "epoch_utc": "2026-11-20 20:35"}, {"day": "16 листопада 2026 (опорна точка 23:30 Kyiv)", "sat": "OBJECT E / R-1 No.3 (57170)", "start_kyiv": "2026-11-16 23:13:00", "peak_kyiv": "23:18:45", "peak_utc": "21:18:45", "end_kyiv": "23:24:15", "dur_0_min": 11.5, "dur_15_min": 5.5, "dur_20_min": 4.5, "win_15": "23:16:00–23:21:15", "max_el": 41.5, "peak_az": 284.6, "peak_dist_km": 758.0, "ellipse_a_km": 15.1, "ellipse_b_km": 10.0, "epoch_utc": "2026-04-10 00:00"}, {"day": "16 листопада 2026 (опорна точка 23:30 Kyiv)", "sat": "RASSVET-2-3 (59781)", "start_kyiv": "2026-11-16 23:54:45", "peak_kyiv": "00:02:00", "peak_utc": "22:02:00", "end_kyiv": "00:09:30", "dur_0_min": 15.0, "dur_15_min": 8.8, "dur_20_min": 7.2, "win_15": "23:57:45–00:06:15", "max_el": 77.7, "peak_az": 77.7, "peak_dist_km": 812.0, "ellipse_a_km": 10.2, "ellipse_b_km": 10.0, "epoch_utc": "2026-09-18 07:15"}, {"day": "16 листопада 2026 (опорна точка 23:30 Kyiv)", "sat": "RASSVET-2-1 (59779)", "start_kyiv": "2026-11-16 23:57:45", "peak_kyiv": "00:05:00", "peak_utc": "22:05:00", "end_kyiv": "00:12:30", "dur_0_min": 15.0, "dur_15_min": 8.8, "dur_20_min": 7.2, "win_15": "00:00:45–00:09:15", "max_el": 81.8, "peak_az": 75.7, "peak_dist_km": 803.0, "ellipse_a_km": 10.1, "ellipse_b_km": 10.0, "epoch_utc": "2026-09-06 20:15"}, {"day": "16 листопада 2026 (опорна точка 23:30 Kyiv)", "sat": "OBJECT E / R-1 No.3 (57170)", "start_kyiv": "2026-11-17 00:48:00", "peak_kyiv": "00:51:30", "peak_utc": "22:51:30", "end_kyiv": "00:55:00", "dur_0_min": 7.2, "dur_15_min": 0.0, "dur_20_min": 0.0, "win_15": "—", "max_el": 5.2, "peak_az": 308.8, "peak_dist_km": 2137.0, "ellipse_a_km": null, "ellipse_b_km": 10.0, "epoch_utc": "2026-04-10 00:00"}, {"day": "16 листопада 2026 (опорна точка 23:30 Kyiv)", "sat": "RASSVET-2-3 (59781)", "start_kyiv": "2026-11-17 01:35:45", "peak_kyiv": "01:42:00", "peak_utc": "23:42:00", "end_kyiv": "01:48:30", "dur_0_min": 13.0, "dur_15_min": 3.5, "dur_20_min": 0.0, "win_15": "01:40:30–01:43:45", "max_el": 17.4, "peak_az": 271.0, "peak_dist_km": 1890.0, "ellipse_a_km": 33.5, "ellipse_b_km": 10.0, "epoch_utc": "2026-09-18 07:15"}, {"day": "16 листопада 2026 (опорна точка 23:30 Kyiv)", "sat": "RASSVET-2-1 (59779)", "start_kyiv": "2026-11-17 01:38:45", "peak_kyiv": "01:45:00", "peak_utc": "23:45:00", "end_kyiv": "01:51:30", "dur_0_min": 13.0, "dur_15_min": 2.8, "dur_20_min": 0.0, "win_15": "01:43:45–01:46:15", "max_el": 16.5, "peak_az": 271.3, "peak_dist_km": 1941.0, "ellipse_a_km": 35.3, "ellipse_b_km": 10.0, "epoch_utc": "2026-09-06 20:15"}]};
+    const PASS_DATA = {"day12": [{"key": "day12", "day": "12 листопада 2026", "focus_kyiv": "2026-11-12 00:53", "focus_hm": "00:53", "window_kyiv": "23:53–01:53 Kyiv", "sat": "RASSVET-3 16 (68375)", "start_kyiv": "2026-11-11 23:53:00", "peak_kyiv": "23:53:45", "peak_utc": "21:53:45", "end_kyiv": "23:57:15", "diff_min": -59.2, "dur_0_min": 4.5, "dur_15_min": 0.0, "dur_20_min": 0.0, "win_15": "—", "max_el": 5.1, "peak_az": 283.6, "peak_dist_km": 2126.0, "ellipse_a_km": null, "ellipse_b_km": 10.0, "epoch_utc": "2026-11-21 07:23"}, {"key": "day12", "day": "12 листопада 2026", "focus_kyiv": "2026-11-12 00:53", "focus_hm": "00:53", "window_kyiv": "23:53–01:53 Kyiv", "sat": "RASSVET-3 13 (68372)", "start_kyiv": "2026-11-11 23:53:45", "peak_kyiv": "23:57:30", "peak_utc": "21:57:30", "end_kyiv": "00:01:15", "diff_min": -55.5, "dur_0_min": 7.8, "dur_15_min": 0.0, "dur_20_min": 0.0, "win_15": "—", "max_el": 5.9, "peak_az": 280.9, "peak_dist_km": 2045.0, "ellipse_a_km": null, "ellipse_b_km": 10.0, "epoch_utc": "2026-11-21 07:26"}, {"key": "day12", "day": "12 листопада 2026", "focus_kyiv": "2026-11-12 00:53", "focus_hm": "00:53", "window_kyiv": "23:53–01:53 Kyiv", "sat": "OBJECT E / R-1 No.3 (57170)", "start_kyiv": "2026-11-12 00:43:15", "peak_kyiv": "00:47:00", "peak_utc": "22:47:00", "end_kyiv": "00:50:30", "diff_min": -6.0, "dur_0_min": 7.5, "dur_15_min": 0.0, "dur_20_min": 0.0, "win_15": "—", "max_el": 5.9, "peak_az": 308.0, "peak_dist_km": 2075.0, "ellipse_a_km": null, "ellipse_b_km": 10.0, "epoch_utc": "2026-04-10 00:00"}, {"key": "day12", "day": "12 листопада 2026", "focus_kyiv": "2026-11-12 00:53", "focus_hm": "00:53", "window_kyiv": "23:53–01:53 Kyiv", "sat": "RASSVET-2-3 (59781)", "start_kyiv": "2026-11-12 00:50:00", "peak_kyiv": "00:57:15", "peak_utc": "22:57:15", "end_kyiv": "01:04:30", "diff_min": 4.2, "dur_0_min": 14.8, "dur_15_min": 7.8, "dur_20_min": 6.2, "win_15": "00:53:30–01:01:00", "max_el": 38.5, "peak_az": 264.8, "peak_dist_km": 1183.0, "ellipse_a_km": 16.0, "ellipse_b_km": 10.0, "epoch_utc": "2026-09-18 07:15"}, {"key": "day12", "day": "12 листопада 2026", "focus_kyiv": "2026-11-12 00:53", "focus_hm": "00:53", "window_kyiv": "23:53–01:53 Kyiv", "sat": "RASSVET-2-1 (59779)", "start_kyiv": "2026-11-12 00:53:00", "peak_kyiv": "01:00:15", "peak_utc": "23:00:15", "end_kyiv": "01:07:15", "diff_min": 7.2, "dur_0_min": 14.5, "dur_15_min": 7.5, "dur_20_min": 6.0, "win_15": "00:56:30–01:03:45", "max_el": 36.5, "peak_az": 266.5, "peak_dist_km": 1225.0, "ellipse_a_km": 16.8, "ellipse_b_km": 10.0, "epoch_utc": "2026-09-06 20:15"}], "day16": [{"key": "day16", "day": "16 листопада 2026", "focus_kyiv": "2026-11-16 23:30", "focus_hm": "23:30", "window_kyiv": "22:30–00:30 Kyiv", "sat": "RASSVET-2-1 (59779)", "start_kyiv": "2026-11-16 22:30:00", "peak_kyiv": "22:30:00", "peak_utc": "20:30:00", "end_kyiv": "22:32:30", "diff_min": -60.0, "dur_0_min": 2.8, "dur_15_min": 0.0, "dur_20_min": 0.0, "win_15": "—", "max_el": 8.3, "peak_az": 12.3, "peak_dist_km": 2496.0, "ellipse_a_km": null, "ellipse_b_km": 10.0, "epoch_utc": "2026-09-06 20:15"}, {"key": "day16", "day": "16 листопада 2026", "focus_kyiv": "2026-11-16 23:30", "focus_hm": "23:30", "window_kyiv": "22:30–00:30 Kyiv", "sat": "RASSVET-3 13 (68372)", "start_kyiv": "2026-11-16 22:30:00", "peak_kyiv": "22:31:15", "peak_utc": "20:31:15", "end_kyiv": "22:36:30", "diff_min": -58.8, "dur_0_min": 6.8, "dur_15_min": 3.0, "dur_20_min": 0.0, "win_15": "22:30:00–22:32:45", "max_el": 19.9, "peak_az": 272.2, "peak_dist_km": 1234.0, "ellipse_a_km": 29.4, "ellipse_b_km": 10.0, "epoch_utc": "2026-11-21 07:26"}, {"key": "day16", "day": "16 листопада 2026", "focus_kyiv": "2026-11-16 23:30", "focus_hm": "23:30", "window_kyiv": "22:30–00:30 Kyiv", "sat": "RASSVET-3 16 (68375)", "start_kyiv": "2026-11-16 22:30:00", "peak_kyiv": "22:30:00", "peak_utc": "20:30:00", "end_kyiv": "22:33:00", "diff_min": -60.0, "dur_0_min": 3.2, "dur_15_min": 0.0, "dur_20_min": 0.0, "win_15": "—", "max_el": 11.8, "peak_az": 234.7, "peak_dist_km": 1618.0, "ellipse_a_km": 48.7, "ellipse_b_km": 10.0, "epoch_utc": "2026-11-21 07:23"}, {"key": "day16", "day": "16 листопада 2026", "focus_kyiv": "2026-11-16 23:30", "focus_hm": "23:30", "window_kyiv": "22:30–00:30 Kyiv", "sat": "RASSVET-3 15 (68374)", "start_kyiv": "2026-11-16 22:30:30", "peak_kyiv": "22:35:15", "peak_utc": "20:35:15", "end_kyiv": "22:40:00", "diff_min": -54.8, "dur_0_min": 9.8, "dur_15_min": 0.0, "dur_20_min": 0.0, "win_15": "—", "max_el": 13.7, "peak_az": 276.9, "peak_dist_km": 1518.0, "ellipse_a_km": 42.3, "ellipse_b_km": 10.0, "epoch_utc": "2026-11-20 20:25"}, {"key": "day16", "day": "16 листопада 2026", "focus_kyiv": "2026-11-16 23:30", "focus_hm": "23:30", "window_kyiv": "22:30–00:30 Kyiv", "sat": "RASSVET-3 8 (68367)", "start_kyiv": "2026-11-16 22:31:15", "peak_kyiv": "22:36:00", "peak_utc": "20:36:00", "end_kyiv": "22:41:00", "diff_min": -54.0, "dur_0_min": 10.0, "dur_15_min": 0.0, "dur_20_min": 0.0, "win_15": "—", "max_el": 13.8, "peak_az": 276.9, "peak_dist_km": 1514.0, "ellipse_a_km": 41.8, "ellipse_b_km": 10.0, "epoch_utc": "2026-11-20 20:28"}, {"key": "day16", "day": "16 листопада 2026", "focus_kyiv": "2026-11-16 23:30", "focus_hm": "23:30", "window_kyiv": "22:30–00:30 Kyiv", "sat": "RASSVET-3 2 (68361)", "start_kyiv": "2026-11-16 22:36:00", "peak_kyiv": "22:40:30", "peak_utc": "20:40:30", "end_kyiv": "22:45:00", "diff_min": -49.5, "dur_0_min": 9.2, "dur_15_min": 0.0, "dur_20_min": 0.0, "win_15": "—", "max_el": 11.5, "peak_az": 277.3, "peak_dist_km": 1647.0, "ellipse_a_km": 50.3, "ellipse_b_km": 10.0, "epoch_utc": "2026-11-21 02:51"}, {"key": "day16", "day": "16 листопада 2026", "focus_kyiv": "2026-11-16 23:30", "focus_hm": "23:30", "window_kyiv": "22:30–00:30 Kyiv", "sat": "RASSVET-3 9 (68368)", "start_kyiv": "2026-11-16 22:38:45", "peak_kyiv": "22:43:30", "peak_utc": "20:43:30", "end_kyiv": "22:48:15", "diff_min": -46.5, "dur_0_min": 9.8, "dur_15_min": 0.0, "dur_20_min": 0.0, "win_15": "—", "max_el": 12.7, "peak_az": 277.0, "peak_dist_km": 1590.0, "ellipse_a_km": 45.4, "ellipse_b_km": 10.0, "epoch_utc": "2026-11-21 14:07"}, {"key": "day16", "day": "16 листопада 2026", "focus_kyiv": "2026-11-16 23:30", "focus_hm": "23:30", "window_kyiv": "22:30–00:30 Kyiv", "sat": "RASSVET-3 10 (68369)", "start_kyiv": "2026-11-16 22:39:30", "peak_kyiv": "22:43:30", "peak_utc": "20:43:30", "end_kyiv": "22:47:15", "diff_min": -46.5, "dur_0_min": 8.0, "dur_15_min": 0.0, "dur_20_min": 0.0, "win_15": "—", "max_el": 6.5, "peak_az": 279.8, "peak_dist_km": 2002.0, "ellipse_a_km": null, "ellipse_b_km": 10.0, "epoch_utc": "2026-11-20 20:35"}, {"key": "day16", "day": "16 листопада 2026", "focus_kyiv": "2026-11-16 23:30", "focus_hm": "23:30", "window_kyiv": "22:30–00:30 Kyiv", "sat": "OBJECT E / R-1 No.3 (57170)", "start_kyiv": "2026-11-16 23:13:00", "peak_kyiv": "23:18:45", "peak_utc": "21:18:45", "end_kyiv": "23:24:15", "diff_min": -11.2, "dur_0_min": 11.5, "dur_15_min": 5.5, "dur_20_min": 4.5, "win_15": "23:16:00–23:21:15", "max_el": 41.5, "peak_az": 284.6, "peak_dist_km": 758.0, "ellipse_a_km": 15.1, "ellipse_b_km": 10.0, "epoch_utc": "2026-04-10 00:00"}, {"key": "day16", "day": "16 листопада 2026", "focus_kyiv": "2026-11-16 23:30", "focus_hm": "23:30", "window_kyiv": "22:30–00:30 Kyiv", "sat": "RASSVET-2-3 (59781)", "start_kyiv": "2026-11-16 23:54:45", "peak_kyiv": "00:02:00", "peak_utc": "22:02:00", "end_kyiv": "00:09:30", "diff_min": 32.0, "dur_0_min": 15.0, "dur_15_min": 8.8, "dur_20_min": 7.2, "win_15": "23:57:45–00:06:15", "max_el": 77.7, "peak_az": 77.7, "peak_dist_km": 812.0, "ellipse_a_km": 10.2, "ellipse_b_km": 10.0, "epoch_utc": "2026-09-18 07:15"}, {"key": "day16", "day": "16 листопада 2026", "focus_kyiv": "2026-11-16 23:30", "focus_hm": "23:30", "window_kyiv": "22:30–00:30 Kyiv", "sat": "RASSVET-2-1 (59779)", "start_kyiv": "2026-11-16 23:57:45", "peak_kyiv": "00:05:00", "peak_utc": "22:05:00", "end_kyiv": "00:12:30", "diff_min": 35.0, "dur_0_min": 15.0, "dur_15_min": 8.8, "dur_20_min": 7.2, "win_15": "00:00:45–00:09:15", "max_el": 81.8, "peak_az": 75.7, "peak_dist_km": 803.0, "ellipse_a_km": 10.1, "ellipse_b_km": 10.0, "epoch_utc": "2026-09-06 20:15"}]};
     let activeDay = "all";
 
     function elBadge(el) {
@@ -263,7 +295,16 @@
       return `<span class="badge">${el.toFixed(1)}°</span>`;
     }
 
-    function renderDayBlock(title, items, minEl, query) {
+    function formatDelta(d) {
+      const sign = d > 0 ? "+" : "";
+      const txt = `${sign}${d.toFixed(1)} хв`;
+      if (Math.abs(d) <= 15) {
+        return `<span class="focus-time">${txt}</span>`;
+      }
+      return `<span>${txt}</span>`;
+    }
+
+    function renderDayBlock(title, focusLabel, windowLabel, items, minEl, query) {
       const filtered = items.filter(row => {
         const okEl = row.max_el >= minEl;
         const okQ = !query || row.sat.toLowerCase().includes(query) || row.peak_kyiv.includes(query);
@@ -275,18 +316,22 @@
         rowsHtml = `<tr><td colspan="9" style="color:var(--muted);text-align:center;">Немає проходів за обраним фільтром</td></tr>`;
       } else {
         rowsHtml = filtered.map(r => {
-          const ellText = r.ellipse_a_km ? `a=${r.ellipse_a_km} км × b=10 км` : "низький кут";
+          const isNear = Math.abs(r.diff_min) <= 15;
+          const rowClass = isNear ? "near-focus" : "";
+          const peakHtml = isNear
+            ? `<span class="focus-time">${r.peak_kyiv}</span>`
+            : `<strong>${r.peak_kyiv}</strong>`;
           return `
-            <tr>
+            <tr class="${rowClass}">
               <td><strong>${r.sat}</strong></td>
-              <td>${r.start_kyiv.slice(11)} – ${r.end_kyiv.slice(11)} Kyiv</td>
-              <td><strong>${r.peak_kyiv}</strong> Kyiv <span style="color:var(--muted)">(${r.peak_utc} UTC)</span></td>
+              <td>${r.start_kyiv.slice(11)} – ${r.end_kyiv.slice(11)}</td>
+              <td>${peakHtml} <span style="color:var(--muted)">(${r.peak_utc} UTC)</span></td>
+              <td>${formatDelta(r.diff_min)}</td>
               <td><strong>${r.dur_0_min.toFixed(1)} хв</strong></td>
               <td><strong>${r.dur_15_min.toFixed(1)} хв</strong> <span style="color:var(--muted)">(${r.win_15})</span></td>
               <td>${r.dur_20_min.toFixed(1)} хв</td>
               <td>${elBadge(r.max_el)}</td>
               <td>${r.peak_az.toFixed(1)}° / ${r.peak_dist_km} км</td>
-              <td>${ellText}</td>
             </tr>
           `;
         }).join("");
@@ -295,6 +340,8 @@
       return `
         <div class="section-title">
           <span>${title}</span>
+          <span class="focus-pill">Ціль: ${focusLabel} Kyiv</span>
+          <span class="badge">Вікно: ${windowLabel}</span>
           <span class="badge">${filtered.length} вікон</span>
         </div>
         <div class="table-wrap">
@@ -303,13 +350,13 @@
               <tr>
                 <th>Супутник</th>
                 <th>Вікно (El &gt; 0°)</th>
-                <th>Кульмінація (пік)</th>
-                <th>Тривалість (&gt;0°)</th>
+                <th>Пік (Kyiv)</th>
+                <th>Δ до цілі</th>
+                <th>Трив. (&gt;0°)</th>
                 <th>Вікно ≥15°</th>
                 <th>Трив. ≥20°</th>
                 <th>Max El</th>
                 <th>Азимут / Дальність</th>
-                <th>Еліпс (b=10 км)</th>
               </tr>
             </thead>
             <tbody>${rowsHtml}</tbody>
@@ -325,10 +372,24 @@
 
       let html = "";
       if (activeDay === "all" || activeDay === "day12") {
-        html += renderDayBlock("12 листопада 2026 (нічне вікно навколо 00:53 Kyiv)", PASS_DATA.day12, minEl, query);
+        html += renderDayBlock(
+          "12 листопада 2026",
+          "00:53",
+          "23:53–01:53 Kyiv",
+          PASS_DATA.day12,
+          minEl,
+          query
+        );
       }
       if (activeDay === "all" || activeDay === "day16") {
-        html += renderDayBlock("16 листопада 2026 (нічне вікно навколо 23:30 Kyiv)", PASS_DATA.day16, minEl, query);
+        html += renderDayBlock(
+          "16 листопада 2026",
+          "23:30",
+          "22:30–00:30 Kyiv",
+          PASS_DATA.day16,
+          minEl,
+          query
+        );
       }
       root.innerHTML = html;
     }
